@@ -2,12 +2,16 @@
 
 import Image from "next/image";
 import { useState, useEffect } from "react";
-import Link from "next/link";
+import { useRouter } from "next/navigation";
+import { usePathname } from 'next/navigation';
 import styles from '@/components/navbar/navbar.module.css';
 
 function Navbar() {
+    const [currentPath, setCurrentPath] = useState<string>(window.location.pathname);
     const [menuOpen, setMenuOpen] = useState(false);
     const [subMenu, setSubMenu] = useState({ planos: false, personalizado: false });
+    const router = useRouter();
+    const pathname = usePathname(); // Obtenha o pathname atual da URL
 
     const toggleMenu = () => {
         setMenuOpen(!menuOpen);
@@ -19,6 +23,12 @@ function Navbar() {
             [key]: !prev[key],
         }));
     };
+
+    const navigateTo = (path: string) => {
+        router.push(path);
+        setCurrentPath(path); // Atualiza o estado com o novo caminho
+    };
+
 
     useEffect(() => {
         if (menuOpen) {
@@ -34,15 +44,35 @@ function Navbar() {
 
     return (
         <div className={styles.navbar}>
-            <div className={styles.logo}>
+            <div 
+                className={styles.logo} 
+                onClick={() => navigateTo("/")}
+                style={{cursor: 'pointer'}}
+            >
                 <Image src="/assets/Logo.svg" alt="Logo" width={32} height={39} />
             </div>
 
             <div className={styles['Nav-links']}>
-                    <Link href="#">Planos</Link>
-                    <Link href="#" className={styles['a-home']}>Home</Link>
-                    <Link href="#">Personalizado</Link>
+                <div
+                    onClick={() => navigateTo("/pages/planos")}
+                    className={pathname === "/pages/planos" ? styles.activeLink : ""}
+                >
+                    Planos
+                </div>
+                <div
+                    onClick={() => navigateTo("/")}
+                    className={pathname === "/" ? styles.activeLink : ""}
+                >
+                    Home
+                </div>
+                <div
+                    onClick={() => navigateTo("/pages/personalizado")}
+                    className={pathname === "/pages/personalizado" ? styles.activeLink : ""}
+                >
+                    Personalizado
+                </div>
             </div>
+
 
             <div></div>
 
@@ -53,7 +83,7 @@ function Navbar() {
                 {menuOpen && (
                     <div className={styles.mobileMenuContainer}>
                         <button onClick={toggleMenu} className={styles.closeButton}>
-                            Fechar 
+                            Fechar
                             <span className={styles.svgWrapper}>
                                 <Image src="/assets/Ellipse.svg" alt="Elipse" width={9} height={9} />
                             </span>
@@ -69,8 +99,8 @@ function Navbar() {
                                 </button>
                                 {subMenu.planos && (
                                     <div className={styles.subLinks}>
-                                        <Link href="#">Teste 1</Link>
-                                        <Link href="#">Teste 2</Link>
+                                        <button onClick={() => navigateTo("/pages/planos/teste1")}>Teste 1</button>
+                                        <button onClick={() => navigateTo("/pages/planos/teste2")}>Teste 2</button>
                                     </div>
                                 )}
                             </div>
@@ -83,8 +113,8 @@ function Navbar() {
                                 </button>
                                 {subMenu.personalizado && (
                                     <div className={styles.subLinks}>
-                                        <Link href="#">Teste 1</Link>
-                                        <Link href="#">Teste 2</Link>
+                                        <button onClick={() => navigateTo("/pages/personalizado/teste1")}>Teste 1</button>
+                                        <button onClick={() => navigateTo("/pages/personalizado/teste2")}>Teste 2</button>
                                     </div>
                                 )}
                             </div>

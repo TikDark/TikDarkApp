@@ -1,7 +1,18 @@
 body {
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: "Inter", serif;
   overflow-y: hidden;
   background-color: #f4f4f4;
+  --color-white-100: #fff;
+  --color-white-60: rgba(255, 255, 255, 0.6); /* 60% de opacidade */
+  --color-white-50: rgba(255, 255, 255, 0.5); /* 50% de opacidade */
+  --color-white-30: rgba(255, 255, 255, 0.3); /* 30% de opacidade */
+  --color-white-20: rgba(255, 255, 255, 0.2); /* 20% de opacidade */
+  --color-white-5: rgba(255, 255, 255, 0.05); /* 5% de opacidade */
+  --color-purple: #8A37F6;
+  --color-black-100: #000;
+  --color-black-20: rgba(0, 0, 0, 0.2); /* 20% de opacidade */
+  --color-black-30: rgba(0, 0, 0, 0.3); /* 30% de opacidade */
+  --color-white-F4: rgba(244, 244, 244, 1); /* F4F4F4 */
 }
 
 * {

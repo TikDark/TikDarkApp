@@ -13,7 +13,7 @@
     --color-black-30: rgba(0, 0, 0, 0.3); /* 30% de opacidade */
     --color-white-F4: rgba(244, 244, 244, 1); /* F4F4F4 */
 
-    font-family: var(--font-inter);
+    font-family: "Inter", serif;
 
     z-index: 2;
     margin: 0;
@@ -38,24 +38,26 @@
     gap: 8px;
 }
 
-.Nav-links a {
+.Nav-links div {
     backdrop-filter: blur(100px);
     padding: 14px 20px;
     text-decoration: none;
     cursor: pointer;
     color: var(--color-white-100);
     font-size: 12px;
-    font-weight: 200;
+    font-weight: 400;
     letter-spacing: 0.5px;
     background-color: var(--color-black-20);
     border-radius: 100px;
     transition: color 0.6s, background-color 0.6s;
 }
 
-.Nav-links a:hover {
-    background-color: var(--color-white-100);
-    color: var(--color-black-100);
-    transition: color 0.6s, background-color 0.6s;
+.Nav-links div:hover {
+    background-color: #0000004f;
+}
+
+.activeLink {
+    background-color: #000 !important; 
 }
 
 .a-home {
