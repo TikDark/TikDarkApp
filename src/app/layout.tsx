@@ -1,9 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
 
-import HomeMain from "./Home/home";
-
-
 export const metadata: Metadata = {
   title: "TikDark",
   description: "TikDark",
@@ -18,8 +15,6 @@ export default function RootLayout({
     <html lang="pt-br">
       <body className={'antialiased'}
       >
-        
-        <HomeMain />
         {children}
       </body>
     </html>

@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import styles from '@/components/navbar.module.css';
+import styles from '@/components/navbar/navbar.module.css';
 
 function Navbar() {
     const [menuOpen, setMenuOpen] = useState(false);
@@ -35,23 +35,16 @@ function Navbar() {
     return (
         <div className={styles.navbar}>
             <div className={styles.logo}>
-                <Image src="/assets/Logo.svg" alt="Logo" width={100} height={50} />
+                <Image src="/assets/Logo.svg" alt="Logo" width={32} height={39} />
             </div>
 
             <div className={styles['Nav-links']}>
-                <div>
                     <Link href="#">Planos</Link>
                     <Link href="#" className={styles['a-home']}>Home</Link>
                     <Link href="#">Personalizado</Link>
-                </div>
             </div>
 
-            <div className={styles['Login--Register']}>
-                <div>
-                    <Link href="#">Login</Link>
-                    <Link href="#" className={styles['a-register']}>Quero ser Dark</Link>
-                </div>
-            </div>
+            <div></div>
 
             <div className={styles["Menu-mobile"]}>
                 <button onClick={toggleMenu} className={styles.menuButton}>
