@@ -1,0 +1,45 @@
+.Copy {
+    --color-white-100: #fff;
+    --color-white-60: rgba(255, 255, 255, 0.6); 
+    --color-white-50: rgba(255, 255, 255, 0.5); 
+    --color-white-30: rgba(255, 255, 255, 0.3); 
+    --color-white-20: rgba(255, 255, 255, 0.2); 
+    --color-white-5: rgba(255, 255, 255, 0.05); 
+    --color-purple: #8A37F6;
+    --color-black-100: #000;
+    --color-black-20: rgba(0, 0, 0, 0.2); 
+    --color-black-30: rgba(0, 0, 0, 0.3); 
+
+    z-index: 2;
+
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.Copy {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    width: 320px;
+    right: 0; 
+    margin-top: 30px;
+    margin-right: 324px; 
+    padding: 0;
+    gap: 124px;
+}
+
+.CopyRight {
+    font-size: 24px;
+    font-weight: 500;
+    color: var(--color-white-50);
+    margin-bottom: 8px; 
+    user-select: none;
+}
+
+.textCopy {
+    font-size: 24px;
+    font-weight: 500;
+    color: var(--color-white-50);
+    user-select: none;
+}

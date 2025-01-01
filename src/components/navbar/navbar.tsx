@@ -25,10 +25,11 @@ function Navbar() {
     };
 
     const navigateTo = (path: string) => {
-        router.push(path);
-        setCurrentPath(path); // Atualiza o estado com o novo caminho
+        setTimeout(() => {
+            router.push(path);
+            setCurrentPath(path); 
+        }, 100); 
     };
-
 
     useEffect(() => {
         if (menuOpen) {
@@ -72,7 +73,6 @@ function Navbar() {
                     Personalizado
                 </div>
             </div>
-
 
             <div></div>
 

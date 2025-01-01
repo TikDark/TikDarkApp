@@ -1,3 +1,5 @@
+import Container from "@/components/containerHome/container";
+import Copy from "@/components/Copyright/copy";
 import Navbar from "@/components/navbar/navbar";
 
 export default function Home() {
@@ -19,6 +21,8 @@ export default function Home() {
             ></div>
 
             <Navbar />
+            <Copy />
+            <Container />
         </div>
     </>
   );
