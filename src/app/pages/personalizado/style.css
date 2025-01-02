@@ -1,4 +1,5 @@
 body {
+    position: relative;
     background-image: url(../../../../public/assets/pexels-pavel-danilyuk-8001056.jpg);
     background-position: center;
     background-repeat: no-repeat;
@@ -6,6 +7,7 @@ body {
     background-attachment: fixed;
     font-family: "Inter", serif;
     overflow-y: scroll;
+    background-color: #000;
 }
 
 .MainSection{
@@ -20,7 +22,8 @@ body {
     gap: 24px;
     color: #fff;
     font-size: 18px;
-    
+    margin-bottom: 100px;
+    margin-top: 34px;
 }
 
 .counter-item {
@@ -39,7 +42,8 @@ body {
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    gap: 450px;
+    width: 100%;
+    max-width: 550px; /* Limita a largura para evitar que o espaço entre os botões seja grande */
 }
 
 .counter-controls {
@@ -57,7 +61,7 @@ body {
 .buttons {
     display: flex;
     gap: 8px;
-    
+    justify-content: center;
 }
 
 .add-button,
@@ -73,31 +77,20 @@ body {
 }
 
 .add-button {
-    border-radius: 100px;
     background-color: #fff;
-    height: 60px;
-    width: 60px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
     transition: all linear 0.4s;
-    cursor: pointer;
+}
 
-}.add-button:hover {
+.add-button:hover {
     background-color: #ffffffbd;
 }
-.remove-button {
-    border-radius: 100px;
-    background-color: rgba(255, 255, 255, 0.2);
-    height: 60px;
-    width: 60px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: all linear 0.4s;
-    cursor: pointer;
 
-}.remove-button:hover {
+.remove-button {
+    background-color: rgba(255, 255, 255, 0.2);
+    transition: all linear 0.4s;
+}
+
+.remove-button:hover {
     background-color: #ffffff57;
 }
 
@@ -142,77 +135,82 @@ input::placeholder {
     font-weight: 500;
 }
 
-.inputs {
-    display: flex;
-    flex-direction: column;
-    gap: 24px;
-}
-
 
 .infoBox {
     position: absolute;
-    right: 20px; /* Distância da lateral direita */
-    top: 50%; /* Centraliza verticalmente */
-    transform: translateY(-50%); /* Ajusta para o centro */
+    right: 144px;
+    top: 50%;
+    transform: translateY(-50%);
     display: flex;
     flex-direction: column;
     gap: 28px;
     padding: 34px;
-    background-color: #fff;
+    background-color: #f4f4f4;
     border-radius: 34px;
     font-size: 16px;
     width: 500px;
-    .textSesion {
-        display: flex;
-        flex-direction: column;
-        gap: 28px;
-    }
-    h1 {
-        margin: 0;
-        font-size: 38px;
-        font-weight: 600;
-        color: #000;
-    }
-    p {
-        margin: 0;
-        font-size: 18px;
-        color: #000;
-        font-weight: 500;
-    }
-    .plans {
-        display: flex;
-        flex-direction: column;
-        gap: 24px;
-        p {
-            font-size: 28px;
-            font-weight: 600;
-        }
-        span {
-            color: rgba(0, 0, 0, 0.5);
-        }
-    }
-    .button.empty {
-        background-color: gray;
-        color: #fff;
-        opacity: 0.5;
-    }
-    .button.filled {
-        background-color: #8A37F6;
-        font-size: 16px;
-        color: #fff;
-        cursor: pointer;
-    }
-    .button {
-        display: flex;
-        flex-direction: row;
-        padding: 18px 20px;
-        display: flex;
-        align-items: center;
-        border-radius: 100px;
-        justify-content: center;
-        text-align: center;
-        transition: all linear 0.4s;
-    }.button.filled:hover {
-        background-color: #6525b9;
-    }
+}
+
+.infoBox .textSesion {
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+}
+
+.infoBox h1 {
+    margin: 0;
+    font-size: 24px;
+    font-weight: 500;
+    color: #000;
+}
+
+.infoBox p {
+    margin: 0;
+    font-size: 80px;
+    color: #000;
+    font-weight: 600;
+    border-bottom: #8A37F6 solid 3.4px;
+}
+
+.infoBox .button-container {
+    display: flex;
+    flex-direction: row;
+    gap: 14px;
+    justify-content: center;
+    align-items: center;
+}
+
+.infoBox .button {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 18px 20px;
+    border-radius: 100px;
+    font-size: 16px;
+    color: #fff;
+    transition: all linear 0.4s;
+    width: 295px; 
+    height: 60px; 
+}
+
+.infoBox .button.empty {
+    background-color: gray;
+    opacity: 0.5;
+}
+
+.infoBox .button.filled {
+    background-color: #8A37F6;
+    cursor: pointer;
+}
+
+.infoBox .button.filled:hover {
+    background-color: #6525b9;
+}
+
+#verOutrosPlanos {
+    cursor: pointer;
+    background-color: #fff;
+    color: #000;
 }

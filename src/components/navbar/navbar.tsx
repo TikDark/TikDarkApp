@@ -28,7 +28,7 @@ function Navbar() {
         setTimeout(() => {
             router.push(path);
             setCurrentPath(path); 
-        }, 100); 
+        }, 0); 
     };
 
     useEffect(() => {

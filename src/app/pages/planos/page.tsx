@@ -8,6 +8,7 @@ import { useRouter } from "next/navigation";
 export default function Home() {
   const [activeButton, setActiveButton] = useState<number>(0); 
   const router = useRouter();
+  
 
   const plans = [
     {
@@ -57,11 +58,9 @@ export default function Home() {
       const totalValue = response.data.total;
       console.log("Valor total calculado:", totalValue);
 
-      // Salva o valor total no localStorage
       localStorage.setItem("totalValue", totalValue.toString());
       console.log("Valor total salvo");
 
-      // Redireciona para a rota ./pages/video
       router.push("./personalizado");
     } catch (error) {
       console.error("Erro ao calcular o valor total:", error);
