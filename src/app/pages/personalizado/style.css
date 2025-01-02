@@ -1,0 +1,218 @@
+body {
+    background-image: url(../../../../public/assets/pexels-pavel-danilyuk-8001056.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    font-family: "Inter", serif;
+    overflow-y: scroll;
+}
+
+.MainSection{
+    margin-top: 75px;
+    margin-left: 145px;
+}
+
+
+.counters {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    color: #fff;
+    font-size: 18px;
+    
+}
+
+.counter-item {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+    font-size: 24px;
+    font-weight: 500;
+}
+
+
+
+.buttons-container{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 450px;
+}
+
+.counter-controls {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+}
+
+.counter-value {
+    font-size: 80px;
+    font-weight: 600;
+}
+
+.buttons {
+    display: flex;
+    gap: 8px;
+    
+}
+
+.add-button,
+.remove-button {
+    border-radius: 100px;
+    height: 60px;
+    width: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all linear 0.4s;
+    cursor: pointer;
+}
+
+.add-button {
+    border-radius: 100px;
+    background-color: #fff;
+    height: 60px;
+    width: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all linear 0.4s;
+    cursor: pointer;
+
+}.add-button:hover {
+    background-color: #ffffffbd;
+}
+.remove-button {
+    border-radius: 100px;
+    background-color: rgba(255, 255, 255, 0.2);
+    height: 60px;
+    width: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all linear 0.4s;
+    cursor: pointer;
+
+}.remove-button:hover {
+    background-color: #ffffff57;
+}
+
+button {
+    border: none;
+}
+
+
+
+.inputContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+
+    .input- {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+
+        input {
+            all: unset;
+            width: 100%;
+            height: 40px;
+            color: #fff;
+            font-size: 34px;
+            opacity: 1;
+            font-weight: 500;
+        }
+    }
+}
+
+.input-{
+    color: #fff;
+    font-size: 24px;
+    font-weight: 500;
+}
+
+input::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 34px;
+    opacity: 1;
+    font-weight: 500;
+}
+
+.inputs {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+
+.infoBox {
+    position: absolute;
+    right: 20px; /* Distância da lateral direita */
+    top: 50%; /* Centraliza verticalmente */
+    transform: translateY(-50%); /* Ajusta para o centro */
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+    padding: 34px;
+    background-color: #fff;
+    border-radius: 34px;
+    font-size: 16px;
+    width: 500px;
+    .textSesion {
+        display: flex;
+        flex-direction: column;
+        gap: 28px;
+    }
+    h1 {
+        margin: 0;
+        font-size: 38px;
+        font-weight: 600;
+        color: #000;
+    }
+    p {
+        margin: 0;
+        font-size: 18px;
+        color: #000;
+        font-weight: 500;
+    }
+    .plans {
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+        p {
+            font-size: 28px;
+            font-weight: 600;
+        }
+        span {
+            color: rgba(0, 0, 0, 0.5);
+        }
+    }
+    .button.empty {
+        background-color: gray;
+        color: #fff;
+        opacity: 0.5;
+    }
+    .button.filled {
+        background-color: #8A37F6;
+        font-size: 16px;
+        color: #fff;
+        cursor: pointer;
+    }
+    .button {
+        display: flex;
+        flex-direction: row;
+        padding: 18px 20px;
+        display: flex;
+        align-items: center;
+        border-radius: 100px;
+        justify-content: center;
+        text-align: center;
+        transition: all linear 0.4s;
+    }.button.filled:hover {
+        background-color: #6525b9;
+    }
+}

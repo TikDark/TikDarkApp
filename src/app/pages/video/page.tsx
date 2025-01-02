@@ -1,5 +1,5 @@
 'use client';
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useRouter } from "next/navigation";
 import Navbar from "@/components/navbar/navbar";
 import '@/app/pages/video/style.css'
@@ -59,7 +59,7 @@ export default function Videos() {
                                     {/* Exibe os botões de Remover e Adicionar apenas no último input */}
                                     {index === videoLinks.length - 1 && videoLinks.length > 1 && (
                                         <div className="remove-button" onClick={() => handleRemoveInput(index)}>
-                                            <Image src={Remove} alt='add' />
+                                            <Image src={Remove} alt='Remove' />
                                         </div>
                                     )}
 

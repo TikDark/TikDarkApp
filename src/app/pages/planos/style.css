@@ -2,6 +2,8 @@ body {
     background-image: url(../../../../public/assets/pexels-kadiravsarr-25312262.jpg);
     background-position: center;
     background-repeat: no-repeat;
+    background-color: rgba(0, 0, 0, 0.2);
+    z-index: 1;
     background-size: cover;
     background-attachment: fixed;
     font-family: "Inter", serif;

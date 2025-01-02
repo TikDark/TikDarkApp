@@ -6,7 +6,7 @@ import axios from "axios";
 import { useRouter } from "next/navigation";
 
 export default function Home() {
-  const [activeButton, setActiveButton] = useState<number>(0); // Define o primeiro item como ativo
+  const [activeButton, setActiveButton] = useState<number>(0); 
   const router = useRouter();
 
   const plans = [
@@ -45,7 +45,7 @@ export default function Home() {
       views: selectedPlan.visualizacoes,
       shares: selectedPlan.compartilhamento,
       saves: selectedPlan.salvamento,
-      videos: 1, // Considerando 1 vídeo como padrão
+      videos: 1,
     };
 
     try {
@@ -62,7 +62,7 @@ export default function Home() {
       console.log("Valor total salvo");
 
       // Redireciona para a rota ./pages/video
-      router.push("./video");
+      router.push("./personalizado");
     } catch (error) {
       console.error("Erro ao calcular o valor total:", error);
     }
