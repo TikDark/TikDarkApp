@@ -11,7 +11,6 @@ import Remove from '../../../../public/assets/remove-button.svg'
 export default function Personalizado() {
 
     const router = useRouter(); 
-    
 
     const [counter, setCounter] = useState<Record<string, number>>({
         Curtidas: 0,
@@ -21,16 +20,37 @@ export default function Personalizado() {
     });
 
     const [videoLinks, setVideoLinks] = useState<string[]>([""]);
+    const [intervalId, setIntervalId] = useState<NodeJS.Timeout | null>(null);
 
-
+    // Função para incrementar o contador
     const incrementCounter = (key: string) => {
         setCounter((prev) => ({ ...prev, [key]: prev[key] + 10 }));
     };
 
+    // Função para decrementar o contador
     const decrementCounter = (key: string) => {
         setCounter((prev) => ({ ...prev, [key]: Math.max(prev[key] - 10, 0) }));
     };
 
+    // Iniciar incremento contínuo
+    const startIncrement = (key: string) => {
+        const id = setInterval(() => incrementCounter(key), 100);
+        setIntervalId(id);
+    };
+
+    // Iniciar decremento contínuo
+    const startDecrement = (key: string) => {
+        const id = setInterval(() => decrementCounter(key), 100);
+        setIntervalId(id);
+    };
+
+    // Parar incremento ou decremento contínuo
+    const stopChanging = () => {
+        if (intervalId) {
+            clearInterval(intervalId);
+            setIntervalId(null);
+        }
+    };
 
     const handleAddInput = () => {
         setVideoLinks([...videoLinks, ""]);
@@ -53,8 +73,6 @@ export default function Personalizado() {
         console.log("Links dos vídeos:", videoLinks);
     };
 
-    
-
     return (
         <div className='personalizado'>
             <Navbar />
@@ -76,12 +94,10 @@ export default function Personalizado() {
                                     </div>
                                     <div>
                                         {index === videoLinks.length - 1 && videoLinks.length > 1 && (
-                                            <div onClick={() => handleRemoveInput(index)}>
-                                            </div>
+                                            <div onClick={() => handleRemoveInput(index)}></div>
                                         )}
                                         {index === videoLinks.length - 1 && videoLinks.length < 5 && (
-                                            <div onClick={handleAddInput}>
-                                            </div>
+                                            <div onClick={handleAddInput}></div>
                                         )}
                                     </div>
                                 </div>
@@ -96,10 +112,22 @@ export default function Personalizado() {
                                 <div className="buttons-container">
                                     <div className="counter-value">{counter[label] || 0}</div>
                                     <div className="buttons">
-                                        <button onClick={() => decrementCounter(label)} className='remove-button'>
+                                        <button
+                                            onMouseDown={() => startDecrement(label)} // Pressionamento contínuo
+                                            onMouseUp={stopChanging} // Para o incremento ou decremento
+                                            onMouseLeave={stopChanging} // Para se o mouse sair da área
+                                            onClick={() => decrementCounter(label)} // Clique simples
+                                            className='remove-button'
+                                        >
                                             <Image src={Remove} alt='Remove' />
                                         </button>
-                                        <button onClick={() => incrementCounter(label)} className='add-button'>
+                                        <button
+                                            onMouseDown={() => startIncrement(label)} // Pressionamento contínuo
+                                            onMouseUp={stopChanging} // Para o incremento ou decremento
+                                            onMouseLeave={stopChanging} // Para se o mouse sair da área
+                                            onClick={() => incrementCounter(label)} // Clique simples
+                                            className='add-button'
+                                        >
                                             <Image src={Add} alt='Add' />
                                         </button>
                                     </div>
@@ -123,7 +151,14 @@ export default function Personalizado() {
                         </div>
                         <div
                             className={`button ${videoLinks.every(link => link.trim() === "") ? "empty" : "filled"}`}
-                            onClick={handleSubmit}
+                            onClick={() => {
+                                const dataToStore = {
+                                    videoLinks,
+                                    counter,
+                                };
+                                localStorage.setItem("pageData", JSON.stringify(dataToStore));
+                                router.push("/pages/checkout");
+                            }}
                         >
                             Revisar
                         </div>
