@@ -4,11 +4,11 @@ import "@/app/pages/planos/style.css";
 import { useState } from "react";
 import axios from "axios";
 import { useRouter } from "next/navigation";
+import Timer from "@/components/timerdesconto/timer";
 
 export default function Home() {
   const [activeButton, setActiveButton] = useState<number>(0); 
   const router = useRouter();
-  
 
   const plans = [
     {
@@ -17,6 +17,7 @@ export default function Home() {
       visualizacoes: 5000,
       compartilhamento: 200,
       salvamento: 100,
+      description: "Ideal para quem está começando no TikTok e deseja ganhar visibilidade inicial.",
     },
     {
       label: "Criador em Ascensão",
@@ -24,6 +25,7 @@ export default function Home() {
       visualizacoes: 50000,
       compartilhamento: 500,
       salvamento: 200,
+      description: "Perfeito para criadores que buscam alavancar seu engajamento e aumentar sua base de seguidores.",
     },
     {
       label: "Estrela Digital",
@@ -31,6 +33,7 @@ export default function Home() {
       visualizacoes: 100000,
       compartilhamento: 2000,
       salvamento: 1000,
+      description: "Para aqueles que desejam se tornar estrelas digitais e liderar nas tendências do TikTok.",
     },
   ];
 
@@ -58,17 +61,20 @@ export default function Home() {
       const totalValue = response.data.total;
       console.log("Valor total calculado:", totalValue);
 
+      // Armazenando os valores do plano no localStorage
+      localStorage.setItem("selectedPlan", JSON.stringify(selectedPlan));
       localStorage.setItem("totalValue", totalValue.toString());
-      console.log("Valor total salvo");
+      console.log("Plano e valor total salvos");
 
       router.push("./personalizado");
     } catch (error) {
       console.error("Erro ao calcular o valor total:", error);
     }
-  };
+};
 
   return (
     <>
+      <Timer />
       <Navbar />
       <section>
         <div className="Session-1">
@@ -96,8 +102,14 @@ export default function Home() {
         {activeButton !== null && (
           <div className="infoBox">
             <div className="textSesion">
+              
+            <div className="promo">
+              <button>Entrega em até 1h</button>
+              <button className="promo-red">50% de desconto</button>
+            </div>
+
               <h1>{plans[activeButton].label}</h1>
-              <p>Ideal para quem está começando no TikTok e deseja ganhar visibilidade inicial.</p>
+              <p>{plans[activeButton].description}</p>
             </div>
             <div className="plans">
               <p>

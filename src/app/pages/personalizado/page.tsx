@@ -1,16 +1,15 @@
-'use client'
+'use client';
 
-import Navbar from '@/components/navbar/navbar'
-import { useState } from "react";
+import Navbar from '@/components/navbar/navbar';
+import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation"; // Hook para redirecionamento
 import './style.css'
 import Image from "next/image";
-import Add from '../../../../public/assets/add-button.svg'
-import Remove from '../../../../public/assets/remove-button.svg'
+import Add from '../../../../public/assets/add-button.svg';
+import Remove from '../../../../public/assets/remove-button.svg';
 
 export default function Personalizado() {
-
-    const router = useRouter(); 
+    const router = useRouter();
 
     const [counter, setCounter] = useState<Record<string, number>>({
         Curtidas: 0,
@@ -72,6 +71,20 @@ export default function Personalizado() {
     const handleSubmit = () => {
         console.log("Links dos vídeos:", videoLinks);
     };
+
+    // Recuperar os valores do plano do localStorage
+    useEffect(() => {
+        const selectedPlan = JSON.parse(localStorage.getItem("selectedPlan") || "{}");
+
+        if (selectedPlan) {
+            setCounter({
+                Curtidas: selectedPlan.curtidas,
+                Visualizações: selectedPlan.visualizacoes,
+                Compartilhamentos: selectedPlan.compartilhamento,
+                Salvamentos: selectedPlan.salvamento,
+            });
+        }
+    }, []);
 
     return (
         <div className='personalizado'>
@@ -166,5 +179,5 @@ export default function Personalizado() {
                 </div>
             </div>
         </div>
-    )
+    );
 }

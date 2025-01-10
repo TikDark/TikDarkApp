@@ -1,0 +1,25 @@
+
+
+.timer {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(255, 0, 0, 1);
+    height: 60px;
+    gap: 6px;
+    z-index: 1000;
+
+
+    h1 {
+        color: rgba(255, 255, 255, 0.8);
+        font-size: 18px;
+        font-weight: 500;
+    }
+
+    p {
+        color: rgba(255, 255, 255, 1);
+        font-size: 18px;
+        font-weight: 500;
+    }
+}
