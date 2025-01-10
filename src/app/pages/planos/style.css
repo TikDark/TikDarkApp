@@ -184,47 +184,22 @@ p {
   background-color: #FF0000 !important;
 }
 
-
-@media (max-width: 1440px) {
-  section {
-    height: 100vh;
-  }
-
-  .Session-1 {
-    justify-content: flex-start;
-    margin-bottom: 0px;
-    height: auto;
-
-    p {
-      margin-top: 20px;
-    }
-  }
-}
-
-@media (max-width: 1024px) {
-  section {
-  }
-
-  .Session-1 {
-    justify-content: flex-start;
-    margin-bottom: 0px;
-    height: auto;
-
-    p {
-      margin-top: 20px;
-    }
-  }
-
-  .textSession p {
-    margin-bottom: 0px;
-  }
+@media (max-width: 1140px) {
 
   .buttons {
-    
+    font-size: 16px !important;
   }
-}
 
-@media (max-width: 768px) {
+  .promo-red {
+    font-size: 12px !important;
+  }
+
+  .promo {
+    button {
+      font-size: 12px !important;
+    }
+  }
+
   section {
     flex-direction: column;
     padding: 20px;
@@ -252,7 +227,7 @@ p {
   }
 
   .infoBox h1 {
-    font-size: 28px;
+    font-size: 48px;
   }
 
   .infoBox p {
@@ -262,33 +237,12 @@ p {
   .infoBox .plans p {
     font-size: 24px;
   }
+  .buttons {
+    margin-bottom: 24px;
+  }
 }
 
 @media (max-width: 480px) {
-  h1 {
-    font-size: 36px;
-  }
-
-  .textSession p {
-    font-size: 14px;
-  }
-
-  .Session-1 p {
-    margin: 0;
-  }
-
-  .infoBox h1 {
-    font-size: 24px;
-  }
-
-  .infoBox p {
-    font-size: 14px;
-  }
-
-  .infoBox .plans p {
-    font-size: 20px;
-  }
-
   .buttons {
     display: flex;
     flex-direction: row;
