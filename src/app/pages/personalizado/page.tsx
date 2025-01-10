@@ -150,12 +150,12 @@ export default function Personalizado() {
                     </div>
                 </div>
 
-                <div className="infoBox">
-                    <div className="textSesion">
+                <div className="infoBox-perso">
+                    <div className="textSesion-perso">
                         <h1>O valor total é:</h1>
                         <p>R$12</p>
                     </div>
-                    <div className="button-container">
+                    <div className="button-container-perso">
                         <div
                             className="button filled" id='verOutrosPlanos' 
                             onClick={() => router.push("/pages/planos")} 

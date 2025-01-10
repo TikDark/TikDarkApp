@@ -2,12 +2,11 @@
 import Navbar from "@/components/navbar/navbar";
 import "@/app/pages/planos/style.css";
 import { useState } from "react";
-import axios from "axios";
 import { useRouter } from "next/navigation";
 import Timer from "@/components/timerdesconto/timer";
 
 export default function Home() {
-  const [activeButton, setActiveButton] = useState<number>(0); 
+  const [activeButton, setActiveButton] = useState<number>(0);
   const router = useRouter();
 
   const plans = [
@@ -41,36 +40,21 @@ export default function Home() {
     setActiveButton(buttonIndex);
   };
 
-  const handlePlanSubscription = async () => {
+  const handlePlanSubscription = () => {
     const selectedPlan = plans[activeButton];
 
-    const requestData = {
-      likes: selectedPlan.curtidas,
-      views: selectedPlan.visualizacoes,
-      shares: selectedPlan.compartilhamento,
-      saves: selectedPlan.salvamento,
-      videos: 1,
-    };
+    // Simulando o cálculo do valor total localmente
+    const totalValue = selectedPlan.curtidas * 0.001 + selectedPlan.visualizacoes * 0.0001;
 
-    try {
-      const response = await axios.post(
-        "https://api-tik-dark.vercel.app/api/calculate",
-        requestData
-      );
+    console.log("Valor total calculado:", totalValue);
 
-      const totalValue = response.data.total;
-      console.log("Valor total calculado:", totalValue);
+    // Armazenando os valores do plano no localStorage
+    localStorage.setItem("selectedPlan", JSON.stringify(selectedPlan));
+    localStorage.setItem("totalValue", totalValue.toString());
+    console.log("Plano e valor total salvos");
 
-      // Armazenando os valores do plano no localStorage
-      localStorage.setItem("selectedPlan", JSON.stringify(selectedPlan));
-      localStorage.setItem("totalValue", totalValue.toString());
-      console.log("Plano e valor total salvos");
-
-      router.push("./personalizado");
-    } catch (error) {
-      console.error("Erro ao calcular o valor total:", error);
-    }
-};
+    router.push("./personalizado");
+  };
 
   return (
     <>
@@ -102,11 +86,10 @@ export default function Home() {
         {activeButton !== null && (
           <div className="infoBox">
             <div className="textSesion">
-              
-            <div className="promo">
-              <button>Entrega em até 1h</button>
-              <button className="promo-red">50% de desconto</button>
-            </div>
+              <div className="promo">
+                <button>Entrega em até 1h</button>
+                <button className="promo-red">50% de desconto</button>
+              </div>
 
               <h1>{plans[activeButton].label}</h1>
               <p>{plans[activeButton].description}</p>

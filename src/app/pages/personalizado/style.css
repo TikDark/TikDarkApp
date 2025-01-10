@@ -137,9 +137,9 @@ input::placeholder {
 }
 
 
-.infoBox {
+.infoBox-perso {
     position: absolute;
-    right: 144px;
+    right: 80px;
     top: 50%;
     transform: translateY(-50%);
     display: flex;
@@ -152,20 +152,20 @@ input::placeholder {
     width: 500px;
 }
 
-.infoBox .textSesion {
+.infoBox-perso .textSesion-perso {
     display: flex;
     flex-direction: column;
     gap: 28px;
 }
 
-.infoBox h1 {
+.infoBox-perso h1 {
     margin: 0;
     font-size: 24px;
     font-weight: 500;
     color: #000;
 }
 
-.infoBox p {
+.infoBox-perso p {
     margin: 0;
     font-size: 80px;
     color: #000;
@@ -173,7 +173,7 @@ input::placeholder {
     border-bottom: #8A37F6 solid 3.4px;
 }
 
-.infoBox .button-container {
+.infoBox-perso .button-container-perso {
     display: flex;
     flex-direction: row;
     gap: 14px;
@@ -181,7 +181,7 @@ input::placeholder {
     align-items: center;
 }
 
-.infoBox .button {
+.infoBox-perso .button {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -196,17 +196,17 @@ input::placeholder {
     height: 60px; 
 }
 
-.infoBox .button.empty {
+.infoBox-perso .button.empty {
     background-color: gray;
     opacity: 0.5;
 }
 
-.infoBox .button.filled {
+.infoBox-perso .button.filled {
     background-color: #8A37F6;
     cursor: pointer;
 }
 
-.infoBox .button.filled:hover {
+.infoBox-perso .button.filled:hover {
     background-color: #6525b9;
 }
 
