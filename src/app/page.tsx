@@ -1,6 +1,7 @@
 import Container from "@/components/containerHome/container";
 import Copy from "@/components/Copyright/copy";
 import Navbar from "@/components/navbar/navbar";
+import "./globals.css";
 
 export default function Home() {
   return (

@@ -31,80 +31,84 @@
     border-radius: 10px; 
 }
 
-.rightTEXT h2 {
+.leftTEXT h2 {
     color: var(--color-white-30);
     font-size: 48px;
     font-weight: 600;
     letter-spacing: 0.5px;
 }
 
-.rightTEXT h1 {
+.leftTEXT h1 {
     color: var(--color-white-100);
     font-size: 100px;
     font-weight: 600;
     letter-spacing: 0.5px;
 }
 
-.rightTEXT p {
+.leftTEXT p {
     color: var(--color-white-60);
     font-size: 24px;
     font-weight: 500;
     letter-spacing: 0.5px;
 }
 
-.rightTEXT {
+.leftTEXT {
     display: flex;
     flex-direction: column;
     width: 673px;
     height: auto;
 }
 
-.CreateTikDark {
+.btnconfira button {
+    display: none;
+}
+
+@media (max-width: 770px) {
+    
+    .lowcontainer {
+        flex-direction: column;
+        align-items: left;
+        
+    }
+
+    .leftTEXT {
+        width: 100%;
+    }
+
+    .leftTEXT h2 {
+        font-size: 36px;
+    }
+
+    .leftTEXT h1 {
+        font-size: 64px;
+    }
+
+    .leftTEXT p {
+        font-size: 20px;
+    }
+
+    .leftTEXT {
+        margin-bottom: 20px;
+    }
+
+    .btnconfira button {
     display: flex;
-    flex-direction: column;
-    background-color: var(--color-white-20);
-    width: 510px;
-    height: 180px;
-    border-radius: 24px;
-    margin-left: auto; 
-    align-self: flex-end; 
-}
-
-.text {
-    margin-left: 28px;
-    margin-top: 28px;
-    color: var(--color-white-60);
-    font-size: 24px;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 24px;
+    gap: 10px;
+    border-radius: 100px;
+    font-size: 18px;
     font-weight: 500;
-    letter-spacing: 0.5px;
-}
-
-.input-container {
-    background-color: var(--color-white-5);
-    margin: 14px;
-    border-radius: 14px;
-}
-
-.input-email {
-    background-color: transparent;
-    border: none;
-    color: var(--color-white-100);
-    font-size: 20px;
-    font-weight: 500;
-    margin: 28px 20px;
-    width: 370px;
-    outline: none;
-}
-
-.input-email::placeholder {
-    color: var(--color-white-50);
-}
-
-.btn-submit {
-    background-color: var(--color-white-100);
-    padding: 16px 20px;
-    border: none;
-    border-radius: 12px;
-    margin-right: 0px;
+    color: #fff;
+    transition: all linear 0.4s;
+    width: 130px; 
+    height: auto; 
+    background-color: #8A37F6;
     cursor: pointer;
+    border: none;
+    outline: none;
+    }
 }

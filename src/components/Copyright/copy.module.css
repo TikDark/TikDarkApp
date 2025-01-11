@@ -43,3 +43,10 @@
     color: var(--color-white-50);
     user-select: none;
 }
+
+@media (max-width: 770px) {
+
+    .Copy {
+        display: none;
+    }
+}

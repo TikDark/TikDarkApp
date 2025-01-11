@@ -1,6 +1,7 @@
 body {
   font-family: "Inter", serif;
   overflow-y: hidden;
+  overflow-x: hidden;
   background-color: #f4f4f4;
   --color-white-100: #fff;
   --color-white-60: rgba(255, 255, 255, 0.6); /* 60% de opacidade */
@@ -19,6 +20,7 @@ body {
   box-sizing: border-box;
   padding: 0;
   margin: 0;
+  
 }
 
 
