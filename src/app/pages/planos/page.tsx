@@ -43,12 +43,10 @@ export default function Home() {
   const handlePlanSubscription = () => {
     const selectedPlan = plans[activeButton];
 
-    // Simulando o cálculo do valor total localmente
     const totalValue = selectedPlan.curtidas * 0.001 + selectedPlan.visualizacoes * 0.0001;
 
     console.log("Valor total calculado:", totalValue);
 
-    // Armazenando os valores do plano no localStorage
     localStorage.setItem("selectedPlan", JSON.stringify(selectedPlan));
     localStorage.setItem("totalValue", totalValue.toString());
     console.log("Plano e valor total salvos");
@@ -83,6 +81,7 @@ export default function Home() {
             constante no TikTok!
           </p>
         </div>
+
         {activeButton !== null && (
           <div className="infoBox">
             <div className="textSesion">
@@ -90,10 +89,10 @@ export default function Home() {
                 <button>Entrega em até 1h</button>
                 <button className="promo-red">50% de desconto</button>
               </div>
-
               <h1>{plans[activeButton].label}</h1>
               <p>{plans[activeButton].description}</p>
             </div>
+
             <div className="plans">
               <p>
                 {plans[activeButton].curtidas} <span>curtidas</span>

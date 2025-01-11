@@ -38,7 +38,7 @@ function Container() {
         <div className={styles.lowcontainer}>
         <div className={styles.rightTEXT}>
             <h2>TikDark</h2>
-            <h1>Conta do TikDark</h1>
+            <h1>Seja TikDark</h1>
             <p>Transforme sua presença no TikTok com nossos pacotes de engajamento personalizados.</p>
         </div>
 

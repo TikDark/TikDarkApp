@@ -118,3 +118,39 @@ body {
     background-color: #fff;
     color: #000;
 }
+
+@media (max-width: 770px) {
+    .infoBox-confirm {
+        width: 90%; 
+        padding: 20px; 
+        font-size: 14px;
+    }
+
+    .confirm h1 {
+        font-size: 32px; 
+    }
+
+    .confirm p {
+        font-size: 14px; 
+    }
+
+    .textSesion-confirm h1 {
+        font-size: 16px; 
+    }
+
+    .textSesion-confirm input {
+        font-size: 16px; 
+        padding: 12px; 
+    }
+
+    .infoBox-confirm .button {
+        padding: 12px 15px; 
+        font-size: 14px; 
+        width: 220px; 
+        height: 50px; 
+    }
+
+    .infoBox-confirm .button-container {
+        gap: 10px;
+    }
+}
