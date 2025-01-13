@@ -23,6 +23,9 @@
 
 
 .navbar {
+    position: fixed;
+    width: 100%;
+    top: 0;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -146,6 +149,7 @@
     .Nav-links, .Login--Register {
         display: flex;
     }
+
 }
 
 .mobileMenuContainer {

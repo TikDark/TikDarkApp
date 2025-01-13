@@ -10,10 +10,44 @@ body {
     background-color: #000;
 }
 
-.MainSection{
-    margin-top: 75px;
-    margin-left: 145px;
+.MainSection {
+    margin: 75px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
+
+
+.counter-value {
+    all: unset;
+}
+
+input[type="number"] {
+    -webkit-appearance: none; /* Remove estilos padrão no Chrome e Safari */
+    -moz-appearance: textfield; /* Remove estilos padrão no Firefox */
+    appearance: none; /* Remove estilos padrão em navegadores modernos */
+    border: none; /* Remove a borda */
+    outline: none; /* Remove o contorno de foco */
+    padding: 0; /* Remove o preenchimento */
+    margin: 0; /* Remove margens */
+    background: none; /* Remove o fundo */
+    box-shadow: none; /* Remove sombras */
+    width: 100%; /* Ajuste o tamanho conforme necessário */
+}
+
+/* Chrome, Safari, Edge, Opera */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Firefox */
+input[type="number"] {
+    -moz-appearance: textfield;
+    appearance: textfield; /* Compatível com navegadores modernos */
+}
+
 
 
 .counters {
@@ -37,13 +71,14 @@ body {
 
 
 
-.buttons-container{
+.buttons-container {
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
     width: 100%;
-    max-width: 550px; /* Limita a largura para evitar que o espaço entre os botões seja grande */
+    max-width: 550px;
+    /* Limita a largura para evitar que o espaço entre os botões seja grande */
 }
 
 .counter-controls {
@@ -104,6 +139,7 @@ button {
     display: flex;
     flex-direction: column;
     gap: 24px;
+    width: 100%;
 
     .input- {
         display: flex;
@@ -123,7 +159,7 @@ button {
     }
 }
 
-.input-{
+.input- {
     color: #fff;
     font-size: 24px;
     font-weight: 500;
@@ -138,10 +174,6 @@ input::placeholder {
 
 
 .infoBox-perso {
-    position: absolute;
-    right: 80px;
-    top: 50%;
-    transform: translateY(-50%);
     display: flex;
     flex-direction: column;
     gap: 28px;
@@ -192,8 +224,8 @@ input::placeholder {
     font-size: 16px;
     color: #fff;
     transition: all linear 0.4s;
-    width: 295px; 
-    height: 60px; 
+    width: 295px;
+    height: 60px;
 }
 
 .infoBox-perso .button.empty {
@@ -214,4 +246,100 @@ input::placeholder {
     cursor: pointer;
     background-color: #fff;
     color: #000;
+}
+
+@media (max-width: 1320px) {
+    body {}
+
+    .MainSection {
+        gap: 24px;
+        flex-direction: column;
+        margin-bottom: 0px;
+        margin: 124px 24px 24px 24px;
+
+        .infoBox-perso {
+            width: 100%;
+            box-sizing: border-box;
+
+            .textSesion-perso {
+                p {
+                    font-size: 48px;
+                }
+            }
+        }
+    }
+
+    .button.filled {
+        font-size: 14px !important;
+    }
+
+    .button.empty {
+        font-size: 14px !important;
+    }
+
+    .counter-value {
+        font-size: 34px;
+    }
+
+
+
+    .buttons {
+        button {
+            width: 48px !important;
+            height: 48px !important;
+        }
+
+        .remove-button {
+            background: #0000005e;
+        }
+    }
+
+    .videoSection {
+        margin: 0;
+        padding: 24px;
+        width: 100%;
+        box-sizing: border-box;
+        background: #f4f4f4;
+        border-radius: 24px;
+
+        .counters {
+            color: #000;
+            margin: 0;
+        }
+    }
+
+    .counter-item {
+        p {
+            font-size: 16px;
+            color: #000000b9;
+        }
+    }
+
+    .inputs {
+        .inputContainer {
+            .input- {
+                color: #000 !important;
+
+                input- {
+                    color: #000;
+                    font-size: 16px !important;
+                }
+            }
+        }
+    }
+
+    input::placeholder {
+        color: rgba(0, 0, 0, 0.253) !important;
+    }
+
+    input {
+        color: #000 !important;
+        width: 100% !important;
+    }
+
+
+    .counter-value {
+        all: unset;
+        color: #000;
+    }
 }

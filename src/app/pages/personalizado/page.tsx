@@ -88,6 +88,11 @@ export default function Personalizado() {
     };
 
     const handleReview = () => {
+        if (videoLinks.every(link => link.trim() === "")) {
+            alert("Preencha pelo menos um link de vídeo.");
+            return;
+        }
+
         const dataToStore = {
             videoLinks,
             counter,
@@ -113,6 +118,7 @@ export default function Personalizado() {
                                             placeholder="https://www.tiktok.com"
                                             value={link}
                                             onChange={(e) => handleInputChange(index, e.target.value)}
+                                            required 
                                         />
                                     </div>
                                     <div>
@@ -133,7 +139,12 @@ export default function Personalizado() {
                             <div key={index} className="counter-item">
                                 <p>{label}</p>
                                 <div className="buttons-container">
-                                    <div className="counter-value">{counter[label] || 0}</div>
+                                    <input
+                                        type="number"
+                                        className="counter-value"
+                                        value={counter[label] || 0}
+                                        onChange={(e) => setCounter({ ...counter, [label]: Number(e.target.value) })}
+                                    />
                                     <div className="buttons">
                                         <button
                                             onMouseDown={() => startDecrement(label)}
