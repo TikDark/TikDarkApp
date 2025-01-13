@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { useRouter } from 'next/navigation'
+import { useRouter } from 'next/navigation';
 import Image from 'next/image';
 import './style.css';
 
@@ -24,6 +24,7 @@ export default function Checkout() {
     });
 
     useEffect(() => {
+        // Recupera os dados da página de personalização (se houver)
         const storedData = localStorage.getItem("pageData");
         if (storedData) {
             const parsedData = JSON.parse(storedData);
@@ -41,14 +42,14 @@ export default function Checkout() {
         <div>
             <div className="infoBox-confirm">
                 <div className="confirm">
-                    <Image src="/assets/Confirm.svg" alt="Curtidas" width={200} height={200} />
+                    <Image src="/assets/Confirm.svg" alt="Confirm" width={200} height={200} />
                     <h1>Pedido confirmado!</h1>
                     <p>Agora é só aguardar, pois em até 1 hora o engajamento solicitado será processado.</p>
                 </div>
 
                 <div className="textSesion-confirm">
                     <h1>Vídeo:</h1>
-                    {videoLinks.length > 0 && (
+                    {videoLinks.length > 0 ? (
                         videoLinks.map((link, index) => (
                             <input
                                 key={index}
@@ -58,6 +59,8 @@ export default function Checkout() {
                                 placeholder="https://www.tiktok.com"
                             />
                         ))
+                    ) : (
+                        <p>Nenhum link de vídeo foi encontrado.</p>
                     )}
                 </div>
 

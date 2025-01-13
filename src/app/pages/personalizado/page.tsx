@@ -2,8 +2,8 @@
 
 import Navbar from '@/components/navbar/navbar';
 import { useState, useEffect } from "react";
-import { useRouter } from "next/navigation"; // Hook para redirecionamento
-import './style.css'
+import { useRouter } from "next/navigation";
+import './style.css';
 import Image from "next/image";
 import Add from '../../../../public/assets/add-button.svg';
 import Remove from '../../../../public/assets/remove-button.svg';
@@ -21,38 +21,32 @@ export default function Personalizado() {
     const [videoLinks, setVideoLinks] = useState<string[]>([""]);
     const [intervalId, setIntervalId] = useState<NodeJS.Timeout | null>(null);
 
-    // Função para incrementar o contador
-    const incrementCounter = (key: string) => {
-        setCounter((prev) => ({ ...prev, [key]: prev[key] + 10 }));
-    };
-
-    // Função para decrementar o contador
-    const decrementCounter = (key: string) => {
-        setCounter((prev) => ({ ...prev, [key]: Math.max(prev[key] - 10, 0) }));
-    };
-
-    // Iniciar incremento contínuo
-    const startIncrement = (key: string) => {
-        const id = setInterval(() => incrementCounter(key), 100);
-        setIntervalId(id);
-    };
-
-    // Iniciar decremento contínuo
-    const startDecrement = (key: string) => {
-        const id = setInterval(() => decrementCounter(key), 100);
-        setIntervalId(id);
-    };
-
-    // Parar incremento ou decremento contínuo
-    const stopChanging = () => {
-        if (intervalId) {
-            clearInterval(intervalId);
-            setIntervalId(null);
+    // Recupera os valores do plano salvo no localStorage
+    useEffect(() => {
+        const selectedPlan = JSON.parse(localStorage.getItem("selectedPlan") || "{}");
+        if (selectedPlan) {
+            setCounter({
+                Curtidas: selectedPlan.curtidas,
+                Visualizações: selectedPlan.visualizacoes,
+                Compartilhamentos: selectedPlan.compartilhamento,
+                Salvamentos: selectedPlan.salvamento,
+            });
         }
+    }, []);
+
+    const calculateTotal = () => {
+        return (
+            counter.Curtidas * 0.002 +
+            counter.Visualizações * 0.00006 +
+            counter.Compartilhamentos * 0.0016 +
+            counter.Salvamentos * 0.002
+        ).toFixed(2);
     };
 
     const handleAddInput = () => {
-        setVideoLinks([...videoLinks, ""]);
+        if (videoLinks.length < 5) {
+            setVideoLinks([...videoLinks, ""]);
+        }
     };
 
     const handleRemoveInput = (index: number) => {
@@ -68,28 +62,44 @@ export default function Personalizado() {
         setVideoLinks(updatedLinks);
     };
 
-    const handleSubmit = () => {
-        console.log("Links dos vídeos:", videoLinks);
+    const incrementCounter = (key: string) => {
+        setCounter((prev) => ({ ...prev, [key]: prev[key] + 10 }));
     };
 
-    // Recuperar os valores do plano do localStorage
-    useEffect(() => {
-        const selectedPlan = JSON.parse(localStorage.getItem("selectedPlan") || "{}");
+    const decrementCounter = (key: string) => {
+        setCounter((prev) => ({ ...prev, [key]: Math.max(prev[key] - 10, 0) }));
+    };
 
-        if (selectedPlan) {
-            setCounter({
-                Curtidas: selectedPlan.curtidas,
-                Visualizações: selectedPlan.visualizacoes,
-                Compartilhamentos: selectedPlan.compartilhamento,
-                Salvamentos: selectedPlan.salvamento,
-            });
+    const startIncrement = (key: string) => {
+        const id = setInterval(() => incrementCounter(key), 100);
+        setIntervalId(id);
+    };
+
+    const startDecrement = (key: string) => {
+        const id = setInterval(() => decrementCounter(key), 100);
+        setIntervalId(id);
+    };
+
+    const stopChanging = () => {
+        if (intervalId) {
+            clearInterval(intervalId);
+            setIntervalId(null);
         }
-    }, []);
+    };
+
+    const handleReview = () => {
+        const dataToStore = {
+            videoLinks,
+            counter,
+            totalValue: calculateTotal(),
+        };
+        localStorage.setItem("pageData", JSON.stringify(dataToStore));
+        router.push("/pages/checkout");
+    };
 
     return (
         <div className='personalizado'>
             <Navbar />
-
             <div className="MainSection">
                 <div className="videoSection">
                     <div className="id-1">
@@ -126,19 +136,19 @@ export default function Personalizado() {
                                     <div className="counter-value">{counter[label] || 0}</div>
                                     <div className="buttons">
                                         <button
-                                            onMouseDown={() => startDecrement(label)} // Pressionamento contínuo
-                                            onMouseUp={stopChanging} // Para o incremento ou decremento
-                                            onMouseLeave={stopChanging} // Para se o mouse sair da área
-                                            onClick={() => decrementCounter(label)} // Clique simples
+                                            onMouseDown={() => startDecrement(label)}
+                                            onMouseUp={stopChanging}
+                                            onMouseLeave={stopChanging}
+                                            onClick={() => decrementCounter(label)}
                                             className='remove-button'
                                         >
                                             <Image src={Remove} alt='Remove' />
                                         </button>
                                         <button
-                                            onMouseDown={() => startIncrement(label)} // Pressionamento contínuo
-                                            onMouseUp={stopChanging} // Para o incremento ou decremento
-                                            onMouseLeave={stopChanging} // Para se o mouse sair da área
-                                            onClick={() => incrementCounter(label)} // Clique simples
+                                            onMouseDown={() => startIncrement(label)}
+                                            onMouseUp={stopChanging}
+                                            onMouseLeave={stopChanging}
+                                            onClick={() => incrementCounter(label)}
                                             className='add-button'
                                         >
                                             <Image src={Add} alt='Add' />
@@ -153,25 +163,18 @@ export default function Personalizado() {
                 <div className="infoBox-perso">
                     <div className="textSesion-perso">
                         <h1>O valor total é:</h1>
-                        <p>R$12</p>
+                        <p>R${calculateTotal()}</p>
                     </div>
                     <div className="button-container-perso">
                         <div
-                            className="button filled" id='verOutrosPlanos' 
-                            onClick={() => router.push("/pages/planos")} 
+                            className="button filled" id='verOutrosPlanos'
+                            onClick={() => router.push("/pages/planos")}
                         >
                             Ver outros planos
                         </div>
                         <div
                             className={`button ${videoLinks.every(link => link.trim() === "") ? "empty" : "filled"}`}
-                            onClick={() => {
-                                const dataToStore = {
-                                    videoLinks,
-                                    counter,
-                                };
-                                localStorage.setItem("pageData", JSON.stringify(dataToStore));
-                                router.push("/pages/checkout");
-                            }}
+                            onClick={handleReview}
                         >
                             Revisar
                         </div>

@@ -42,15 +42,18 @@ export default function Home() {
 
   const handlePlanSubscription = () => {
     const selectedPlan = plans[activeButton];
-
-    const totalValue = selectedPlan.curtidas * 0.001 + selectedPlan.visualizacoes * 0.0001;
-
+    const totalValue =
+      selectedPlan.curtidas * 0.002 +
+      selectedPlan.visualizacoes * 0.00006 +
+      selectedPlan.compartilhamento * 0.0016 +
+      selectedPlan.salvamento * 0.002;
+  
     console.log("Valor total calculado:", totalValue);
-
+  
     localStorage.setItem("selectedPlan", JSON.stringify(selectedPlan));
-    localStorage.setItem("totalValue", totalValue.toString());
+    localStorage.setItem("totalValue", totalValue.toFixed(2));
     console.log("Plano e valor total salvos");
-
+  
     router.push("./personalizado");
   };
 
