@@ -110,5 +110,6 @@
     cursor: pointer;
     border: none;
     outline: none;
+    user-select: none;
     }
 }
