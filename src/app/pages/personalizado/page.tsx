@@ -7,6 +7,7 @@ import './style.css';
 import Image from "next/image";
 import Add from '../../../../public/assets/add-button.svg';
 import Remove from '../../../../public/assets/remove-button.svg';
+import Timer from '@/components/timerdesconto/timer';
 
 export default function Personalizado() {
     const router = useRouter();
@@ -21,19 +22,20 @@ export default function Personalizado() {
     const [videoLinks, setVideoLinks] = useState<string[]>([""]);
     const [intervalId, setIntervalId] = useState<NodeJS.Timeout | null>(null);
 
-    // Recupera os valores do plano salvo no localStorage
     useEffect(() => {
-        const selectedPlan = JSON.parse(localStorage.getItem("selectedPlan") || "{}");
-        if (selectedPlan) {
-            setCounter({
-                Curtidas: selectedPlan.curtidas,
-                Visualizações: selectedPlan.visualizacoes,
-                Compartilhamentos: selectedPlan.compartilhamento,
-                Salvamentos: selectedPlan.salvamento,
-            });
+        if (typeof window !== "undefined") {
+            const selectedPlan = JSON.parse(localStorage.getItem("selectedPlan") || "{}");
+            if (selectedPlan) {
+                setCounter({
+                    Curtidas: selectedPlan.curtidas,
+                    Visualizações: selectedPlan.visualizacoes,
+                    Compartilhamentos: selectedPlan.compartilhamento,
+                    Salvamentos: selectedPlan.salvamento,
+                });
+            }
         }
     }, []);
-
+    
     const calculateTotal = () => {
         return (
             counter.Curtidas * 0.002 +
@@ -104,7 +106,8 @@ export default function Personalizado() {
 
     return (
         <div className='personalizado'>
-            <Navbar />
+        <Navbar />
+            <Timer />
             <div className="MainSection">
                 <div className="videoSection">
                     <div className="id-1">
@@ -118,7 +121,7 @@ export default function Personalizado() {
                                             placeholder="https://www.tiktok.com"
                                             value={link}
                                             onChange={(e) => handleInputChange(index, e.target.value)}
-                                            required 
+                                            required
                                         />
                                     </div>
                                     <div>
@@ -181,7 +184,7 @@ export default function Personalizado() {
                             className="button filled" id='verOutrosPlanos'
                             onClick={() => router.push("/pages/planos")}
                         >
-                            Ver outros planos
+                            Voltar
                         </div>
                         <div
                             className={`button ${videoLinks.every(link => link.trim() === "") ? "empty" : "filled"}`}

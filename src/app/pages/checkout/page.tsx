@@ -26,25 +26,28 @@ export default function Checkout() {
     const [totalValue, setTotalValue] = useState<string>("0.00");
 
     useEffect(() => {
-        // Recuperar dados do localStorage
-        const storedData = localStorage.getItem("pageData");
-        if (storedData) {
-            const parsedData = JSON.parse(storedData);
-            setVideoLinks(parsedData.videoLinks || []);
-            setCounter(parsedData.counter || {
-                Curtidas: 0,
-                Visualizações: 0,
-                Compartilhamentos: 0,
-                Salvamentos: 0,
-            });
+        // Verificar se estamos no cliente antes de acessar o localStorage
+        if (typeof window !== "undefined") {
+            // Recuperar dados do localStorage
+            const storedData = localStorage.getItem("pageData");
+            if (storedData) {
+                const parsedData = JSON.parse(storedData);
+                setVideoLinks(parsedData.videoLinks || []);
+                setCounter(parsedData.counter || {
+                    Curtidas: 0,
+                    Visualizações: 0,
+                    Compartilhamentos: 0,
+                    Salvamentos: 0,
+                });
+            }
+    
+            // Recuperar valor total
+            const storedTotalValue = localStorage.getItem("totalValue");
+            if (storedTotalValue) {
+                setTotalValue(storedTotalValue);
+            }
         }
-
-        // Recuperar valor total
-        const storedTotalValue = localStorage.getItem("totalValue");
-        if (storedTotalValue) {
-            setTotalValue(storedTotalValue);
-        }
-    }, []);
+    }, []); // Executa apenas uma vez, após o componente ser montado
 
     // Função para enviar os dados para a API e criar a sessão de checkout
     const handleSubmit = async () => {

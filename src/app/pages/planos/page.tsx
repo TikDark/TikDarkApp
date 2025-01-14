@@ -41,30 +41,35 @@ export default function Home() {
   };
 
   const handlePlanSubscription = () => {
-    const selectedPlan = plans[activeButton];
-    const totalValue =
-      selectedPlan.curtidas * 0.002 +
-      selectedPlan.visualizacoes * 0.00006 +
-      selectedPlan.compartilhamento * 0.0016 +
-      selectedPlan.salvamento * 0.002;
+    // Verificar se estamos no cliente (evita erro no servidor)
+    if (typeof window !== "undefined") {
+      const selectedPlan = plans[activeButton];
+      const totalValue =
+        selectedPlan.curtidas * 0.002 +
+        selectedPlan.visualizacoes * 0.00006 +
+        selectedPlan.compartilhamento * 0.0016 +
+        selectedPlan.salvamento * 0.002;
   
-    console.log("Valor total calculado:", totalValue);
+      console.log("Valor total calculado:", totalValue);
   
-    localStorage.setItem("selectedPlan", JSON.stringify(selectedPlan));
-    localStorage.setItem("totalValue", totalValue.toFixed(2));
-    console.log("Plano e valor total salvos");
+      // Armazenar os valores no localStorage
+      localStorage.setItem("selectedPlan", JSON.stringify(selectedPlan));
+      localStorage.setItem("totalValue", totalValue.toFixed(2));
+      console.log("Plano e valor total salvos");
   
-    router.push("./personalizado");
+      // Redirecionar para a página de personalizado
+      router.push("./personalizado");
+    }
   };
 
   return (
     <>
       <Timer />
       <Navbar />
-      <section>
+      <section className="pagePlanos">
         <div className="Session-1">
           <div className="textSession">
-            <h1>Escolha o plano ideal</h1>
+            <h1 className="h1">Escolha o plano ideal</h1>
             <p>Descubra nossos planos criados para atender suas necessidades de engajamento.</p>
             <div className="buttons">
               {plans.map((plan, index) => (
@@ -78,11 +83,6 @@ export default function Home() {
               ))}
             </div>
           </div>
-          <p>
-            Os planos são aplicados por vídeo, garantindo engajamento direcionado para o conteúdo que você escolher.
-            Além disso, todos os planos podem ser renovados automaticamente a cada mês, mantendo seu crescimento
-            constante no TikTok!
-          </p>
         </div>
 
         {activeButton !== null && (
@@ -113,6 +113,7 @@ export default function Home() {
             <div className="button" onClick={handlePlanSubscription}>
               Assinar plano
             </div>
+            <p style={{fontSize: '14px', width: '100%', textAlign: 'center', }}>Entre em contato: <a style={{all: 'unset'}} href="mailto:contato@tikdark.online">contato@tikdark.online</a></p>
           </div>
         )}
       </section>

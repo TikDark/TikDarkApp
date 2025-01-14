@@ -21,7 +21,7 @@ function Container() {
         <div className={styles.btnconfira}>
             <button onClick={handleNavigate}>Confira</button>
         </div>
-        
+
         </div>
     );
     }

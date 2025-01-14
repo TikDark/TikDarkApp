@@ -1,14 +1,9 @@
 body {
-    position: relative; 
-    height: 100vh; 
     background-image: url(../../../../public/assets/pexels-pavel-danilyuk-8001056.jpg);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
     background-attachment: fixed;
-    font-family: "Inter", serif;
-    overflow-y: scroll;
-    background-color: #000;
 }
 
 

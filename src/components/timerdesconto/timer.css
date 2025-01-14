@@ -1,6 +1,8 @@
 
-
 .timer {
+    position: fixed;
+    top: 0;
+    width: 100%;
     display: none;
     flex-direction: row;
     align-items: center;
@@ -9,6 +11,9 @@
     height: 60px;
     gap: 6px;
     z-index: 1000;
+    box-sizing: border-box;
+    top: 0;
+    left: 0;
 
 
     h1 {
