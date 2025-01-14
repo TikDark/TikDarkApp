@@ -243,6 +243,10 @@ input::placeholder {
     background-color: #6525b9;
 }
 
+button {
+    user-select: none;
+}
+
 #verOutrosPlanos {
     cursor: pointer;
     background-color: #fff;
