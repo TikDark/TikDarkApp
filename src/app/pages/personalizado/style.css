@@ -19,35 +19,35 @@ body {
 }
 
 input[type="number"] {
-    -webkit-appearance: none; /* Remove estilos padrão no Chrome e Safari */
-    -moz-appearance: textfield; /* Remove estilos padrão no Firefox */
-    appearance: none; /* Remove estilos padrão em navegadores modernos */
-    border: none; /* Remove a borda */
-    outline: none; /* Remove o contorno de foco */
-    padding: 0; /* Remove o preenchimento */
-    margin: 0; /* Remove margens */
-    background: none; /* Remove o fundo */
-    box-shadow: none; /* Remove sombras */
-    width: 100% !important; /* Ajuste o tamanho conforme necessário */
+    -webkit-appearance: none; 
+    -moz-appearance: textfield; 
+    appearance: none; 
+    border: none;
+    outline: none; 
+    padding: 0;
+    margin: 0; 
+    background: none; 
+    box-shadow: none; 
+    width: 100% !important; 
 }
 
 @media (max-width: 1140px) {
     input[type="number"] {
-        width: 100px !important; /* Ajuste o tamanho conforme necessário */
+        width: 100px !important; 
     }
 }
 
-/* Chrome, Safari, Edge, Opera */
+
 input[type="number"]::-webkit-inner-spin-button,
 input[type="number"]::-webkit-outer-spin-button {
     -webkit-appearance: none;
     margin: 0;
 }
 
-/* Firefox */
+
 input[type="number"] {
     -moz-appearance: textfield;
-    appearance: textfield; /* Compatível com navegadores modernos */
+    appearance: textfield;
 }
 
 
@@ -79,7 +79,7 @@ input[type="number"] {
     align-items: center;
     justify-content: space-between;
     width: 100%;
-    /* Limita a largura para evitar que o espaço entre os botões seja grande */
+    
 }
 
 .counter-controls {
