@@ -10,10 +10,10 @@ export default function Home() {
   const [isClient, setIsClient] = useState(false);
 
   useEffect(() => {
-    setIsClient(true); // Definido como 'true' após a montagem no cliente
+    setIsClient(true); 
   }, []);
 
-  if (!isClient) return null; // Não renderiza nada até o código ser executado no cliente
+  if (!isClient) return null;
 
   return (
     <>
