@@ -26,7 +26,7 @@ export default function Checkout() {
     const [totalValue, setTotalValue] = useState<string>("0.00");
 
     useEffect(() => {
-        // Verificar se estamos no cliente antes de acessar o localStorage
+        
         if (typeof window !== "undefined") {
             // Recuperar dados do localStorage
             const storedData = localStorage.getItem("pageData");
@@ -41,21 +41,21 @@ export default function Checkout() {
                 });
             }
     
-            // Recuperar valor total
+           
             const storedTotalValue = localStorage.getItem("totalValue");
             if (storedTotalValue) {
                 setTotalValue(storedTotalValue);
             }
         }
-    }, []); // Executa apenas uma vez, após o componente ser montado
+    }, []); 
 
-    // Função para enviar os dados para a API e criar a sessão de checkout
+   
     const handleSubmit = async () => {
         try {
             const response = await axios.post(
                 'https://api-tik-dark.vercel.app/api/checkout',
                 {
-                    videoLink: videoLinks[0], // Pegando o primeiro vídeo, se houver
+                    videoLink: videoLinks[0], 
                     likes: counter.Curtidas,
                     views: counter.Visualizações,
                     shares: counter.Compartilhamentos,
@@ -70,10 +70,10 @@ export default function Checkout() {
             );
 
             if (response.data.id) {
-                // Carregar Stripe.js
+                
                 const stripe = await loadStripe('pk_test_51PO8B8HxYCLCBFu8Pl8mw2IMlmtGENjRA9DREhuwyjZy6ZuESybZKgw6Pi33z0G8IP80bLaDYLUTaaffGAZ7XwGp00QpS7sQHz');
                 
-                // Redireciona para o Stripe Checkout com o session ID retornado
+               
                 const { error } = await stripe!.redirectToCheckout({
                     sessionId: response.data.id,
                 });
