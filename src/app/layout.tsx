@@ -8,8 +8,8 @@ export const metadata: Metadata = {
 };
 
 const inter = Inter({
-  subsets: ['latin'], // Inclua o subset que você precisa
-  variable: '--font-inter', // Adiciona uma variável CSS para a fonte
+  subsets: ['latin'],
+  variable: '--font-inter', 
 });
 
 export default function RootLayout({
