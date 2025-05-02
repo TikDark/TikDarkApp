@@ -41,7 +41,7 @@ export default function Home() {
   };
 
   const handlePlanSubscription = () => {
-    // Verificar se estamos no cliente (evita erro no servidor)
+
     if (typeof window !== "undefined") {
       const selectedPlan = plans[activeButton];
       const totalValue =
@@ -51,13 +51,11 @@ export default function Home() {
         selectedPlan.salvamento * 0.002;
   
       console.log("Valor total calculado:", totalValue);
-  
-      // Armazenar os valores no localStorage
+
       localStorage.setItem("selectedPlan", JSON.stringify(selectedPlan));
       localStorage.setItem("totalValue", totalValue.toFixed(2));
       console.log("Plano e valor total salvos");
   
-      // Redirecionar para a página de personalizado
       router.push("./personalizado");
     }
   };
