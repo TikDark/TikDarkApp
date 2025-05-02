@@ -184,7 +184,7 @@ export default function Personalizado() {
                             className="button filled" id='verOutrosPlanos'
                             onClick={() => router.push("/pages/planos")}
                         >
-                            Voltar
+                        Voltar
                         </div>
                         <div
                             className={`button ${videoLinks.every(link => link.trim() === "") ? "empty" : "filled"}`}
