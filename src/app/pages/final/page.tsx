@@ -24,9 +24,9 @@ export default function Checkout() {
     });
 
     useEffect(() => {
-        // Verificar se estamos no cliente antes de acessar o localStorage
+        
         if (typeof window !== "undefined") {
-            // Recupera os dados da página de personalização (se houver)
+        
             const storedData = localStorage.getItem("pageData");
             if (storedData) {
                 const parsedData = JSON.parse(storedData);
@@ -39,7 +39,7 @@ export default function Checkout() {
                 });
             }
         }
-    }, []); // Executa apenas uma vez, após o componente ser montado
+    }, []); 
 
     return (
         <div>
