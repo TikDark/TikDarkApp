@@ -11,7 +11,7 @@ function Navbar() {
     const [menuOpen, setMenuOpen] = useState(false);
     const [subMenu, setSubMenu] = useState({ planos: false, personalizado: false });
     const router = useRouter();
-    const pathname = usePathname(); // Obtenha o pathname atual da URL
+    const pathname = usePathname(); 
 
     const toggleMenu = () => {
         setMenuOpen(!menuOpen);
